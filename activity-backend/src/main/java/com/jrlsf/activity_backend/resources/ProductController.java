@@ -1,33 +1,30 @@
 package com.jrlsf.activity_backend.resources;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.jrlsf.activity_backend.models.Product;
+
+import jakarta.annotation.PostConstruct;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 //Imports do Rest Controller, GetMapping, Product.java
 
 @RestController
 public class ProductController {
-
-    @GetMapping("product")   
-    public Product getProduct(){
-        //Usando jSON precisa declarar o Product
-        //do Models no lugar de String ou Int, ETC...
-        Product p = new Product();
-        p.setId(1);
-        p.setName("Ship");
-        p.setPrice(55.55);
-        
-        return p;
-        //return "Produto:Product";        
-    }
-    @GetMapping("products")
-    public List<Product> getProducts(){
+    
+    private List<Product> products = new ArrayList<>();
+    //Use @PostController Para determinar que esse método retornará 
+    //na forma de Post suas respostas para a solução
+    @PostConstruct
+    public void init(){
         //Usando jSON precisa declarar o Product
         //do Models no lugar de String ou Int, ETC...
         Product p1 = new Product();
@@ -44,13 +41,57 @@ public class ProductController {
         p3.setId(1);
         p3.setName("Ship 03");
         p3.setPrice(88.55);
-        //Criação de uma Lista sendo um Array List JSON
-        List <Product> listProd = new ArrayList<>();
-        listProd.add(p1);
-        listProd.add(p2);
-        listProd.add(p3);
+        products.add(p1);
+        products.add(p2);
+        products.add(p3);
+    }
 
-        return listProd;
+    @GetMapping("products/{id}")   
+    public ResponseEntity<Product> getProduct(@PathVariable int id){
+        //Usando jSON precisa declarar o Product
+        //do Models no lugar de String ou Int, ETC...
+        /*Product p = new Product();
+        p.setId(1);
+        p.setName("Ship");
+        p.setPrice(55.55);
+
+        //return "Produto:Product"; 
+        */
+        /* Método durante as aulas 1.14, 1.15 e 1.16
+        //Agora retorna um produto de products 
+        //da barra de navegação pega da lista
+        //Lista Disponível no método Void Init  
+        if( id <= products.size()){
+            return ResponseEntity.ok(products.get(id - 1));
+        } else {
+            //Retorna a resposta de Erro 404 do Navegador
+            //return ResponseEntity.notFound().build();
+            //Retorna a Mensagem de Erro 404 do servidor
+            //definida pelo servidor logo abaixo
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Product not found");
+        }
+            */
+        /* Método de Resposta na aula 1.17 e em diante */
+        Product prod = products.stream()
+        .filter(p -> p.getId() == id)
+        //.findAny()
+        .findFirst()
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Product not found")); //S
+
+        return ResponseEntity.ok(prod);
+    }
+    @GetMapping("products")
+    public List<Product> getProducts(){
+        //Criação de uma Lista sendo um Array List JSON
+        /*List <Product> products = new ArrayList<>();
+        products.add(p1);
+        products.add(p2);
+        products.add(p3);
+        */
+        //Agora retorna os produtos da 
+        //navegação por products da lista
+        //Lista Disponível no método Void Init
+        return products;
     }
 
 }
