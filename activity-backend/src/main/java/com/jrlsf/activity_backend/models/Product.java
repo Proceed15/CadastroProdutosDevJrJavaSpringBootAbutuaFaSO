@@ -5,6 +5,18 @@ public class Product {
     private int id;
     private String name;
     private double price;
+    
+    //Método Construttor
+    public Product(int id, String name, double price){
+        //System.out.println("Construindo um Produto");
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+    public Product(){
+        
+    }
+
     //Métodos Públicos Get e Set
     public int getId() {
         return id;
