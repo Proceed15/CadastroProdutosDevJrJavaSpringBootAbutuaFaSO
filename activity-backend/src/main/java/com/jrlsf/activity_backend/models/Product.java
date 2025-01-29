@@ -5,13 +5,19 @@ public class Product {
     private int id;
     private String name;
     private double price;
+    private String description;
+    private String option;
+    private String category;
     
     //Método Construttor
-    public Product(int id, String name, double price){
+    public Product(int id, String name, double price, String description, String option, String category){
         //System.out.println("Construindo um Produto");
         this.id = id;
         this.name = name;
         this.price = price;
+        this.description = description;
+        this.option = option;
+        this.category = category;
     }
     public Product(){
         
@@ -35,6 +41,24 @@ public class Product {
     }
     public double getPrice() {
         return price;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public String getOption() {
+        return option;
+    }
+    public void setOption(String option) {
+        this.option = option;
+    }
+    public String getCategory() {
+        return category;
+    }
+    public void setCategory(String category) {
+        this.category = category;
     }
     public void setPrice(double price) {
         this.price = price;
