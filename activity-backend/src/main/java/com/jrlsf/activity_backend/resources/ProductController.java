@@ -8,6 +8,7 @@ import com.jrlsf.activity_backend.models.Product;
 import jakarta.annotation.PostConstruct;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -19,32 +20,36 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class ProductController {
+
+    private List<Product> products = Arrays.asList(new Product(1, "Ship 01", 37.9),
+                                        new Product(2, "Ship 02", 88.99),
+                                        new Product(3, "Ship 03", 199.99));
     
-    private List<Product> products = new ArrayList<>();
+    //private List<Product> products = new ArrayList<>();
     //Use @PostController Para determinar que esse método retornará 
     //na forma de Post suas respostas para a solução
     @PostConstruct
     public void init(){
         //Usando jSON precisa declarar o Product
         //do Models no lugar de String ou Int, ETC...
-        Product p1 = new Product(1, "Ship 01", 30.9);
+        //Product p1 = new Product(1, "Ship 01", 37.9);
         /*p1.setId(1);
         p1.setName("Ship 01");
         p1.setPrice(66.55); */
 
-        Product p2 = new Product(2, "Ship 02", 88.99);
+        //Product p2 = new Product(2, "Ship 02", 88.99);
         /* p2.setId(1);
         p2.setName("Ship 02");
         p2.setPrice(77.55);*/
         
 
-        Product p3 = new Product(3, "Ship 03", 199.99);
+        //Product p3 = new Product(3, "Ship 03", 199.99);
         /* p3.setId(1);
         p3.setName("Ship 03");
-        p3.setPrice(88.55);*/
+        p3.setPrice(88.55);
         products.add(p1);
         products.add(p2);
-        products.add(p3);
+        products.add(p3);*/
     }
 
     @GetMapping("products/{id}")   
