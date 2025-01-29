@@ -1,26 +1,27 @@
 package com.jrlsf.activity_backend.models;
 
 public class Category {
-    private int CatId;
-    private String CatName;
+    private int id;
+    private String name;
 
 
-public Category(int id, String Name){
-    this.CatId = CatId;
-    this.CatName = CatName;
-}
+
+public Category(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 public Category(){}
-public int getCatId() {
-    return CatId;
+public int getid() {
+    return id;
 }
-public void setCatId(int catId) {
-    CatId = catId;
+public void setid(int id) {
+    this.id = id;
 }
-public String getCatName() {
-    return CatName;
+public String getname() {
+    return name;
 }
-public void setCatName(String catName) {
-    CatName = catName;
+public void setname(String name) {
+    this.name = name;
 }
 
 }

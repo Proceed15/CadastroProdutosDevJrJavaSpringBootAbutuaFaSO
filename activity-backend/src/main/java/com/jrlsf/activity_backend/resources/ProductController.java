@@ -82,7 +82,7 @@ public class ProductController {
         .filter(p -> p.getId() == id)
         //.findAny()
         .findFirst()
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Product not found")); //S
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Product Not Found")); //S
 
         return ResponseEntity.ok(prod);
     }
