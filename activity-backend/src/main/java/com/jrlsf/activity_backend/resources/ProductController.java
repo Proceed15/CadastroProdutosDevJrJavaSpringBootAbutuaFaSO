@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 public class ProductController {
 
-    private List<Product> products = Arrays.asList(new Product(1, "Ship 01", 37.9, "The Firsy Ship", "Lançamento", "Produção Própria"),
-                                        new Product(2, "Ship 02", 88.99, "The OnWay Ship", "Lançamento", "Produção Própria"),
-                                        new Product(3, "Ship 03", 199.99, "The Way Ship", "Lançamento", "Produção Própria"));
+    private List<Product> products = Arrays.asList(new Product(1, "Ship 01", 37.9, "The Firsy Ship", true, true, 3),
+                                        new Product(2, "Ship 02", 88.99, "The OnWay Ship", true, true, 4),
+                                        new Product(3, "Ship 03", 199.99, "The Way Ship", true, true, 5));
     
     //private List<Product> products = new ArrayList<>();
     //Use @PostController Para determinar que esse método retornará 

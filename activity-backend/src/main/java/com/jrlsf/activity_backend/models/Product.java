@@ -6,18 +6,26 @@ public class Product {
     private String name;
     private double price;
     private String description;
-    private String option;
-    private String category;
-    
-    //Método Construttor
-    public Product(int id, String name, double price, String description, String option, String category){
+    private boolean promotion;
+    private boolean newProduct;
+    private int idCategory;
+
+    //Métodos Construtores
+    public Product(int id, String name, double price, String description){
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+    }
+    public Product(int id, String name, double price, String description, boolean promotion, boolean newProduct, int idCategory){
         //System.out.println("Construindo um Produto");
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
-        this.option = option;
-        this.category = category;
+        this.promotion = promotion;
+        this.newProduct = newProduct;
+        this.idCategory = idCategory;
     }
     public Product(){
         
@@ -48,19 +56,25 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getOption() {
-        return option;
-    }
-    public void setOption(String option) {
-        this.option = option;
-    }
-    public String getCategory() {
-        return category;
-    }
-    public void setCategory(String category) {
-        this.category = category;
-    }
     public void setPrice(double price) {
         this.price = price;
-    }    
+    }
+    public boolean isPromotion() {
+        return promotion;
+    }
+    public void setPromotion(boolean promotion) {
+        this.promotion = promotion;
+    }
+    public boolean isNewProduct() {
+        return newProduct;
+    }
+    public void setNewProduct(boolean newProduct) {
+        this.newProduct = newProduct;
+    }
+    public int getIdCategory() {
+        return idCategory;
+    }
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
+    }
 }
