@@ -50,7 +50,7 @@ loadProducts();
 
 //Load all products
 function loadProducts() {
-
+    //Requisição e Respostas
     $.getJSON("http://localhost:8080/products", (response) => {
         //Salva cada Prod para um Produto de cada Resposta do Servidor, o Backend nesse caso já está fornecendo as respostas completas
         for (let prod of response) {
