@@ -34,7 +34,7 @@ var products = [
         new: false
     },
 ];*/
-var products = [];
+/*
 var categories = [
     { id: 1, name: "Produção Própria" },
     { id: 2, name: "Nacional" },
@@ -43,15 +43,30 @@ var categories = [
     { id: 5, name: "Nacional" },
     { id: 6, name: "Importado" }
 ];
+*/
+var products = [];
+var categories = []
 
 //OnLoad
 loadProducts();
-
-
+loadCategories();
+//load all categories
+function loadCategories(){
+    //Requisição e Respostas
+    $.ajax({url:"http://localhost:8080/categories", 
+        type: "GET",
+        //Transformando em requisição Síncrona para a categoria sempre ser primeira
+        async: false,
+        success: (response) => {
+            categories = response;
+        }
+});
+}
 //Load all products
 function loadProducts() {
     //Requisição e Respostas
     $.getJSON("http://localhost:8080/products", (response) => {
+        products = response;
         //Salva cada Prod para um Produto de cada Resposta do Servidor, o Backend nesse caso já está fornecendo as respostas completas
         for (let prod of response) {
             addNewRow(prod);
