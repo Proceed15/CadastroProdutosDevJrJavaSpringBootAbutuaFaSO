@@ -13,17 +13,19 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 //Imports do Rest Controller, GetMapping, Product.java
 
 @RestController
+@CrossOrigin
 public class ProductController {
 
-    private List<Product> products = Arrays.asList(new Product(1, "Ship 01", 37.9, "The Firsy Ship", true, true, 3),
-                                        new Product(2, "Ship 02", 88.99, "The OnWay Ship", true, true, 4),
-                                        new Product(3, "Ship 03", 199.99, "The Way Ship", true, true, 5));
+    private List<Product> products = Arrays.asList(new Product(1, "Ship 01", "The Firsy Ship", 37.9,  3, true, true),
+                                        new Product(2, "Ship 02", "The OnWay Ship", 88.99, 4, true, true),
+                                        new Product(3, "Ship 03", "The Way Ship", 199.99, 5, true, true));
     
     //private List<Product> products = new ArrayList<>();
     //Use @PostController Para determinar que esse método retornará 

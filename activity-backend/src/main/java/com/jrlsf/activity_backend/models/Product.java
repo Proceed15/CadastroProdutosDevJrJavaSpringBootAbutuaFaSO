@@ -17,15 +17,15 @@ public class Product {
         this.price = price;
         this.description = description;
     }
-    public Product(int id, String name, double price, String description, boolean promotion, boolean newProduct, int idCategory){
+    public Product(int id, String name, String description, double price, int idCategory, boolean promotion, boolean newProduct){
         //System.out.println("Construindo um Produto");
         this.id = id;
         this.name = name;
-        this.price = price;
         this.description = description;
+        this.price = price;
+        this.idCategory = idCategory;
         this.promotion = promotion;
         this.newProduct = newProduct;
-        this.idCategory = idCategory;
     }
     public Product(){
         
@@ -50,14 +50,14 @@ public class Product {
     public double getPrice() {
         return price;
     }
+    public void setPrice(double price) {
+        this.price = price;
+    }
     public String getDescription() {
         return description;
     }
     public void setDescription(String description) {
         this.description = description;
-    }
-    public void setPrice(double price) {
-        this.price = price;
     }
     public boolean isPromotion() {
         return promotion;
@@ -77,4 +77,5 @@ public class Product {
     public void setIdCategory(int idCategory) {
         this.idCategory = idCategory;
     }
+    
 }
