@@ -25,7 +25,8 @@ public class CategoryController {
     new Category(3, "Idéias"),
     new Category(4, "Produção Própria"),
     new Category(5, "Nacional"),
-    new Category(6, "Importado"));
+    new Category(6, "Importado"),
+    new Category(7, "Premiums"));
 
     @PostConstruct
     public void init() {

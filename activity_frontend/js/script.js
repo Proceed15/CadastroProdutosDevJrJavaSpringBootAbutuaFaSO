@@ -59,8 +59,14 @@ function loadCategories(){
         async: false,
         success: (response) => {
             categories = response;
-        }
+            for (var cat of categories) {
+                document.getElementById("selectCategory").innerHTML += `<option value=${cat.id}>${cat.name}</option>`;
+                
+                //value=idCategory;
+            }
+        },
 });
+
 }
 //Load all products
 function loadProducts() {
@@ -94,6 +100,22 @@ function save() {
 
 }
 
+//Add new category
+function addNewCat(cat){
+    var table = document.getElementById("productsTable");
+
+    var newRow = table.insertRow();
+    //Insert product category
+    var categoryNode = document.createTextNode(categories[prod.idCategory - 1].name);
+    newRow.insertCell().appendChild(categoryNode);
+
+    //Insert product options
+    //var options = "";
+    var options = document.getElementById('categories').value=idCategory;
+    cell = newRow.insertCell();
+    cell.className="d-none d-md-table-cell";
+    cell.innerHTML = options;
+}
 
 //Add new Row
 function addNewRow(prod) {
