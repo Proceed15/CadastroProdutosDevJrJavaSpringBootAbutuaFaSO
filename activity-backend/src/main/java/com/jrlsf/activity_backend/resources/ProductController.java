@@ -2,11 +2,13 @@ package com.jrlsf.activity_backend.resources;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.jrlsf.activity_backend.models.Product;
 
 import jakarta.annotation.PostConstruct;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +20,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 //Imports do Rest Controller, GetMapping, Product.java
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @CrossOrigin
@@ -31,6 +36,23 @@ public class ProductController {
     //private List<Product> products = new ArrayList<>();
     //Use @PostController Para determinar que esse método retornará 
     //na forma de Post suas respostas para a solução
+    
+    @PostMapping("products")
+    public ResponseEntity<Product> save(@RequestBody Product product) {
+        //TODO: process POST request
+        product.setId(products.size()+1);
+        products.add(product);
+
+
+        URI location = ServletUriComponentsBuilder
+        .fromCurrentRequest()
+        .path("/{id}")
+        .buildAndExpand(product.getId())
+        .toUri();
+        return ResponseEntity.created(location).body(product);
+    }
+    
+
     @PostConstruct
     public void init(){
         //Usando jSON precisa declarar o Product
