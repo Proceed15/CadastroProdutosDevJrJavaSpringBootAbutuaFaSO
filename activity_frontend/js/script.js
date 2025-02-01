@@ -60,9 +60,10 @@ function loadCategories(){
         success: (response) => {
             categories = response;
             for (var cat of categories) {
+                //Seleciona as Opções pelo id das Categorias, mostrando uma opção para cada uma
                 document.getElementById("selectCategory").innerHTML += `<option value=${cat.id}>${cat.name}</option>`;
                 
-                //value=idCategory;
+                //value=id from Category;
             }
         },
 });
@@ -99,7 +100,7 @@ function save() {
     document.getElementById("formProduct").reset();
 
 }
-
+/*
 //Add new category
 function addNewCat(cat){
     var table = document.getElementById("productsTable");
@@ -116,7 +117,7 @@ function addNewCat(cat){
     cell.className="d-none d-md-table-cell";
     cell.innerHTML = options;
 }
-
+*/
 //Add new Row
 function addNewRow(prod) {
     var table = document.getElementById("productsTable");
