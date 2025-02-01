@@ -1,0 +1,43 @@
+{
+"name": "Ship 01",
+    "price": 37.9,
+    "description": "The Firsy First Ship",
+    "promotion": true,
+    "newProduct": true,
+    "idCategory": 3
+} {
+"name": "Ship 02",
+    "price": 88.99,
+    "description": "The OnWay Ship",
+    "promotion": true,
+    "newProduct": true,
+    "idCategory": 4
+} {
+"name": "Ship 03",
+    "price": 199.99,
+    "description": "The Way Ship",
+    "promotion": true,
+    "newProduct": true,
+    "idCategory": 5
+} {
+"name": "Ship 04",
+    "price": 666.89,
+    "description": "The OnGoing Ship",
+    "promotion": true,
+    "newProduct": true,
+    "idCategory": 6
+} {
+"name": "Ship 05",
+    "price": 666.89,
+    "description": "The OnGoing Ship",
+    "promotion": true,
+    "newProduct": true,
+    "idCategory": 6
+} {
+"name": "Ship 06",
+    "price": 666.89,
+    "description": "The Got There Ship",
+    "promotion": true,
+    "newProduct": true,
+    "idCategory": 6
+}   

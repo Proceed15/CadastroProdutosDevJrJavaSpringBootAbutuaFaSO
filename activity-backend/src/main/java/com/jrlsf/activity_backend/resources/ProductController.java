@@ -28,11 +28,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 @CrossOrigin
 public class ProductController {
 
+    //Criando assim essa lista aceita novos registros depois da criação
+    private List<Product> products = new ArrayList<>();
+    /*método asList só aceita os registros já informados em sua criação
     private List<Product> products = Arrays.asList(new Product(1, "Ship 01", "The Firsy First Ship", 37.9,  3, true, true),
                                         new Product(2, "Ship 02", "The OnWay Ship", 88.99, 4, true, true),
                                         new Product(3, "Ship 03", "The Way Ship", 199.99, 5, true, true),
                                         new Product(4, "Ship 04", "The OnGoing Ship", 666.89, 6, true, true));
-    
+    */
     //private List<Product> products = new ArrayList<>();
     //Use @PostController Para determinar que esse método retornará 
     //na forma de Post suas respostas para a solução
