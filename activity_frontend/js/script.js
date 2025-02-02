@@ -94,30 +94,21 @@ function save() {
         newProduct: document.getElementById("checkBoxNewProduct").checked
     };
 
-    addNewRow(prod);
-    products.push(prod);
-
-    document.getElementById("formProduct").reset();
-
+    //Ajustando o Save para se adequar ao corpo da requisição adicionada
+    $.ajax({url:"http://localhost:8080/products", 
+        type: "POST",
+        //Transformando em requisição Assíncrona
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(prod),
+            success: (product) => {
+            addNewRow(product);
+            products.push(product);
+            //Limpa o Formulário   
+            document.getElementById("formProduct").reset();
+        },
+    });    
 }
-/*
-//Add new category
-function addNewCat(cat){
-    var table = document.getElementById("productsTable");
-
-    var newRow = table.insertRow();
-    //Insert product category
-    var categoryNode = document.createTextNode(categories[prod.idCategory - 1].name);
-    newRow.insertCell().appendChild(categoryNode);
-
-    //Insert product options
-    //var options = "";
-    var options = document.getElementById('categories').value=idCategory;
-    cell = newRow.insertCell();
-    cell.className="d-none d-md-table-cell";
-    cell.innerHTML = options;
-}
-*/
 //Add new Row
 function addNewRow(prod) {
     var table = document.getElementById("productsTable");
@@ -168,7 +159,24 @@ function addNewRow(prod) {
 }
 
 
+/*
+//Add new category
+function addNewCat(cat){
+    var table = document.getElementById("productsTable");
 
+    var newRow = table.insertRow();
+    //Insert product category
+    var categoryNode = document.createTextNode(categories[prod.idCategory - 1].name);
+    newRow.insertCell().appendChild(categoryNode);
+
+    //Insert product options
+    //var options = "";
+    var options = document.getElementById('categories').value=idCategory;
+    cell = newRow.insertCell();
+    cell.className="d-none d-md-table-cell";
+    cell.innerHTML = options;
+}
+*/
 
 
 
