@@ -89,17 +89,18 @@ function save() {
         name: document.getElementById("inputName").value,
         description: document.getElementById("inputDescription").value,
         price: convertToNumber(document.getElementById("inputPrice").value),
-        category: document.getElementById("selectCategory").value,
+        idCategory: document.getElementById("selectCategory").value,
         promotion: document.getElementById("checkBoxPromotion").checked,
         newProduct: document.getElementById("checkBoxNewProduct").checked
     };
-
+    
     //Ajustando o Save para se adequar ao corpo da requisição adicionada
     $.ajax({url:"http://localhost:8080/products", 
         type: "POST",
         //Transformando em requisição Assíncrona
         async: false,
         contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
         data: JSON.stringify(prod),
             success: (product) => {
             addNewRow(product);
